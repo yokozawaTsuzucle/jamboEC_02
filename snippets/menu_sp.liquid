@@ -1,0 +1,38 @@
+        <div class="header_right">
+            <a class="cart_pc" href="{{ shop.url }}/cart"><i class="fas fa-shopping-cart"></i></a>
+            <a class="instagram_pc" href="https://www.instagram.com/doublesiks_official/?hl=ja"><i class="fab fa-instagram"></i></a>
+        </div>
+
+
+        <div class="menu_text font01"><a class="cart_pc" href="{{ shop.url }}/cart"><i class="fas fa-shopping-cart"></i></a></div>
+        <a class="menu-trigger" href="#">
+            <span></span>
+            <span class="middle"></span>
+            <span></span>
+        </a>
+
+
+        <div class="menu">
+                <div class="menu-contents font01">
+                    {% for link in linklists[section.settings.main_linklist].links %}
+                        <a href="{{link.url}}">{{link.title}}</a>
+                    {% endfor %}
+                </div>
+
+
+
+                <div class="menu_foot font01">
+                    <div class="mf_container">
+                        <a class="instagram" href="https://www.instagram.com/doublesiks_official/?hl=ja">
+                            <i class="fab fa-instagram"></i>Instagram
+
+                        </a>
+                        <a class="line" href="https://line.me/R/ti/p/%40886wqltv">
+                            <i class="fab fa-line"></i>Official LINE
+                        </a>
+                        <a class="cart" href="{{ shop.url }}/cart">
+                            <i class="fas fa-shopping-cart"></i>Cart
+                        </a>
+                    </div>
+                </div>
+        </div>

@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'brother';
+    src: url(' //cdn.shopify.com/s/files/1/0520/8250/7949/t/2/assets/Amiri-Regular.woff?v=3292246155667968028 ') format('woff');
+}
+
+
+
+.font01 {
+    font-family: 'brother' !important;
+    font-weight: lighter;
+}
+
+.font02 {
+    font-family: serif;
+}

@@ -1,0 +1,30 @@
+<div class="section_container">
+        <div class="section_title font01">NEWS</div>
+        
+        <div class="news_all">
+            
+            
+           {% for article in blogs['ニュース'].articles limit:3%}
+ 
+                <div class="news">
+                            <a href="{{ article.url }}">
+                                <div class="news_inner">
+                                    <div class="image_box">
+                                        <img src="{{ article.image.src | img_url: '500x' }}" alt="">
+                                    </div>
+
+                                    <div class="news_date font01">{{ article.published_at | date: "%Y.%m.%d " }}</div>
+                                    <div class="news_text font02">{{ article.title }}</div>
+                                </div>
+                            </a>
+                   
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="btn_box">
+                <a class="viewmore b_hover font01" href="{{blogs['ニュース'].url}}">VIEW MORE</a>
+            </div>
+
+    </div>
+    
