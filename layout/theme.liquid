@@ -1,57 +1,260 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   {% if template == 'index' %}
-    <title>{{ shop.name }} | {{ page_title }}</title>
-  {% elsif template == '404' %}
-    <title>Page Not Found | {{ shop.name }}</title>
+  <title>{{ shop.name }}</title>
+  {% elseif template = '404' %}
+  <title>Page Not Found | {{ shop.name }}</title>
   {% else %}
-    <title>{{ page_title }} | {{ shop.name }}</title>
+  <title>{{ page_title }} | {{ shop.name }}</title>
   {% endif %}
-
-  {% if page_description %}
-    <meta name="description" content="{{ page_description }}" />
-  {% endif %}
-
-  {{ content_for_header }}
-
-  <link rel="canonical" href="{{ canonical_url }}" />
-  <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <!--========OGP=settings==========-->
-
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="DOUBLESIKS" />
-    <meta property="og:description" content="「DOUBLESIKS」公式WEBサイトです。[Free yourself]というコンセプトのもと、大人のための遊び心を大切にした、新たなファッションブランドです。" />
-    <meta property="og:image" content="./image/ogp.png">
-    <meta property="og:image:alt" content="https://doublesiks.com">
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="DOUBLESIKS Free yourself 本来のあなたを解放してあげよう" />
-
-    <!--========OGP=settings==========-->
-
-    <link rel="icon" type="image/x-icon" href="image/favicon.png">
-  {{ 'style.scss' | asset_url | stylesheet_tag }}
-
-</head>
-<body>
-  {% section 'header' %}
-  {{ content_for_layout }}
   
-  {% section 'footer' %}
+  {% if page_description %}
+  <meta name="description" content="{{ page_description }}">
+  {% endif %}
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
-  {{ 'theme.js' | asset_url | script_tag }}
+  {{content_for_header}}
+
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  {{ 'reset.css' | asset_url | stylesheet_tag }}
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+</head>
+
+<body>
+
+  {% section 'header' %}
+
+
+
+  
+  <section class="slider">
+    
+    <ul class="slider-wrap">
+      <li class="slider-item01 slider-item">
+        <div class="copy_area">
+        </div>
+      </li>
+      <li class="slider-item02 slider-item">
+        <div class="copy_area">
+        </div>
+      </li>
+      <li class="slider-item03 slider-item">
+        <div class="copy_area">
+        </div>
+      </li>
+      <li class="slider-item04 slider-item">
+        <div class="copy_area">
+        </div>
+      </li>
+    </ul>
+
+  </section>
+
+  <section class="2022_new_collection sec">
+    <h2>2022 NEW COLLECTION "APPLAUSE"</h2>
+    <div class="collection-wrap flex">
+      <a href="#" class="product_card">
+        <img src="img/IMG_0016a.jpg" alt="">
+        <h3>生チョコレート"MAISON"（マスカット）</h3>
+        <p class="price">¥2,592</p>
+        <p class="Btn bgleft"><span>詳細を見る</span></p>
+      </a>
+      <a href="#" class="product_card">
+        <img src="img/IMG_0016a.jpg" alt="">
+        <h3>生チョコレート"MAISON"（マスカット）</h3>
+        <p class="price">¥2,592</p>
+        <p class="Btn bgleft"><span>詳細を見る</span></p>
+      </a>
+      <a href="#" class="product_card">
+        <img src="img/IMG_0016a.jpg" alt="">
+        <h3>生チョコレート"MAISON"（マスカット）</h3>
+        <p class="price">¥2,592</p>
+        <p class="Btn bgleft"><span>詳細を見る</span></p>
+      </a>
+      <a href="#" class="product_card">
+        <img src="img/IMG_0016a.jpg" alt="">
+        <h3>生チョコレート"MAISON"（マスカット）</h3>
+        <p class="price">¥2,592</p>
+        <p class="Btn bgleft"><span>詳細を見る</span></p>
+      </a>
+
+    </div>
+
+    <a href="#" class="Btn02 bgleft02"><span>VIEW ALL</span></a>
+
+  </section>
+
+  
+
+  <section class="sec sec03">
+    <h2>土曜限定販売の大人気商品</h2>
+    <div class="popular_product flex">
+      <img src="img/shabazouSquare.jpg" alt="" class="img">
+      <div class="product__detail">
+        <div class="product__detail__main">
+          <h2><span>生ガトーショコラ</span></h2>
+          <p class="price">¥2,700</p>
+        </div>
+        <div class="product__detail__text">
+          <p>チョコレートをたっぷり使用し、小麦粉不使用でチョコレート・バター・卵のみでリッチに仕上げました。カカオニブとレアに焼き上げたガトーショコラの食感が絶妙。外はさっくり、中はとろりレアに。</p>
+          <p>
+            メゾンカカオのロングセラーの逸品。<br>
+            お手土産や贈り物にも喜ばれます。
+          </p>
+          <a href="#">美味しい秘密はこちらから！</a>
+          <p>
+            ※以下の期間熨斗の対応をお断りさせていただいております。何卒ご了承頂きますようお願い申し上げます。<br>中止期間：2022年1月10日〜3月14日ご注文分
+          </p>
+          <p>
+            ※ 住所不備、物流の状況、道路状況、天候、その他の事由によりご希望の到着日に沿いかねる場合がございます。余裕をもったご到着日のご指定をお勧めしております。
+          </p>
+        </div>
+        <div class="counter">
+          <span><i class="fas fa-minus"></i></span>
+          <span>1</span>
+          <span><i class="fas fa-plus"></i></span>
+        </div>
+        <button href="#" class="Btn02 bgleft02">
+          <span>カートに追加する</span>
+        </button>
+        <a href="/product.html" class="link__detail">詳細を見る</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="sec04 sec">
+    <div class="items-wrapper flex">
+      <a href="product.html" class="item">
+        <div class="item__content">
+          <h3>NEW COLLECTION</h3>
+          <div class="Btn bgleft bgleft03">
+            <span>もっと見る</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="product.html" class="item">
+        <div class="item__content">
+          <h3>NEW COLLECTION</h3>
+          <div class="Btn bgleft bgleft03">
+            <span>もっと見る</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="product.html" class="item">
+        <div class="item__content">
+          <h3>NEW COLLECTION</h3>
+          <div class="Btn bgleft bgleft03">
+            <span>もっと見る</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="product.html" class="item">
+        <div class="item__content">
+          <h3>NEW COLLECTION</h3>
+          <div class="Btn bgleft bgleft03">
+            <span>もっと見る</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="product.html" class="item">
+        <div class="item__content">
+          <h3>NEW COLLECTION</h3>
+          <div class="Btn bgleft bgleft03">
+            <span>もっと見る</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+  <section class="sec05 sec">
+    <div class="bkimg__contents flex">
+      <div class="bkimg__contents__txtBox">
+        <p class="min">店舗へのご来店もお待ちしております</p>
+        <h2>私たち焼肉ジャンボについて</h2>
+        <div class="Btn bgleft">
+          <span>詳しくはこちら＞</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <div class="special">
+    <div class="special__contents flex" id="item01">
+      <img src="img/toraji.jpeg" alt="" class="Imgside">
+      <div class="txt-side">
+        <div class="txt-side__txt">
+
+          <p class="min">ONLINE SHOP</p>
+          <h2>オンライン販売商品について</h2>
+          <p class="detail">コロンビア現地でのカカオ自社農園から、チョコレートの製造、湘南自社工場での開発・生産、そして販売まで、MAISON CACAOは全ての工程を、厳しい基準のもと行っています。それはゆるぎないおいしさへのこだわりから。MAISON CACAOによってあらゆる人に幸せをお届けするのが私たちの願いです。</p>
+        </div>
+      </div>
+    </div>
+    <div class="special__contents flex" id="item02">
+      <img src="img/shop-image.png" alt="" class="Imgside">
+      <div class="txt-side">
+        <div class="txt-side__txt">
+
+          <p class="min">OUR CONCEPT</p>
+          <h2>焼肉ジャンボについて</h2>
+          <p class="detail">食を通じて人々に感動を創業当時からどこにも真似できない唯一無二の味を追求してきました。試行錯誤を重ね、その”型破り”が今のジャンボの”スタイル”となりました。そんな伝統と革新の味を是非ご賞味ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="special__btn">
+      <ul class="tab flex">
+        <li><a href="#item01">オンライン販売商品について</a></li>
+        <li><a href="#item02">私たちについて</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="category">
+    <ul class="category__items">
+      <li class="category__item">
+        <a href="#" class="flex item__link">
+          <img src="img/houseImage.jpg" alt="">
+          <div class="item__txt"><span>オンライン限定</span></div>
+        </a>
+      </li>
+      <li class="category__item">
+        <a href="#" class="flex item__link">
+          <img src="img/specialLineup.jpg" alt="">
+          <div class="item__txt"><span>サイドメニュー</span></div>
+        </a>
+      </li>
+      <li class="category__item">
+    </ul>
+  </div>
+
+  <footer>
+    <div class="footer__inner">
+      <p class="copy">©️ 2022 Yakiniku-jambo Co., Ltd</p>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/14c63bdccc.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
