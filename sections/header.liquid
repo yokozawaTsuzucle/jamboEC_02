@@ -3,7 +3,7 @@
       <nav class="nav">
         <ul class="nav_list">
 
-        
+
           {% for link in linklists.main-menu.links %} <!--リンクをひとつずつ取り出す-->          
              {% assign child_list_handle = link.title | handleize %}<!--リンクの名前をchild＿list＿handleで定義-->
              {% if linklists[child_list_handle].links != blank %}
@@ -47,6 +47,62 @@
 
 
         </ul>
+
+                <ul class="nav_list">
+        <!--リンクをひとつずつ取り出す-->
+         {% for link in linklists.main-menu.links %}
+          
+          <!---リンクの名前をchild＿list＿handleで定義-->
+          {% assign child_list_handle = link.title | handleize %}
+          <!--リンクのchild_linkが空でなかったら（リンクが下の階層を持っていたら）-->
+          {% if linklists[child_list_handle].links != blank %}
+          <!--ドロップダウンメニューを出す-->
+          <li class="has-child"><!--子要素を持つ li にはhas-childというクラス名をつける-->
+            <a href="{{ link.url }}">
+              {{link.title}}
+            </a>
+            <ul>
+             <!--下の階層のリンクをひとつずつ取り出す-->
+             {% for childlink in linklists[child_list_handle].links %}
+             <!--その名前をsublist _handleとして定義する-->
+             {% assign sub_list_handle = childlink.title | handleize %}
+             <!--sub_list_handleがあったら-->
+             {% if linklists[sub_list_handle].links != blank %}
+             <!--ドロップダウンメニューを出す-->
+             <li>
+                <a href="{{ childlink.url }}">
+                  {{link.title}}
+                </a>
+                <ul>
+                 <!--sub_list_handleのタイトルをひとつずつ表示-->
+                 {% for sublink in linklists[sub_list_handle].links %}
+                 <li>
+                  <a href="{{sublink.url}}">{{sublink.title}}</a>
+                 </li>
+                 {% endfor %}
+
+
+                </ul>
+             </li>
+             {% else %}
+             <li>
+              <a href="{{childlink.url}}">{{childlink.title}}</a>
+             </li>
+             {% endif %}
+             {% endfor %}
+
+
+             
+            </ul>
+            {% else %}
+            <a href="{{% link.url %}}">{{ link.title }}</a>
+            {% endif %}
+            
+          </li>
+          {% endfor %}
+             
+         </ul>
+        
       </nav>
     </div>
     <div class="hamburger" id="js-hamburger">
