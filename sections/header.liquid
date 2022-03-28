@@ -11,14 +11,14 @@
 
                       <a href="{{ link.url }}">{{ link.title }}</a>
                                 <ul class="child_ul">
-                                  {% for childlink in linklists[child_list_handle].main-menu.links %} <!--リンクをひとつずつ取り出す-->  
+                                  {% for childlink in linklists[child_list_handle].links %} <!--リンクをひとつずつ取り出す-->  
                                   {% assign sub_list_handle = childlink.title | handleize %}<!--リンクの名前をchild＿list＿handleで定義--> 
                                   {% if linklists[sub_list_handle].links != blank %}
 
                                   <li class="has-child">
                                     <a href="{{ childlink.url }}">{{ childlink.title }}</a>
                                               <ul class="sub_ul">
-                                                {% for sublink in linklists[sub_list_handle ].main-menu.links %}<!--孫リストここから-->
+                                                {% for sublink in linklists[sub_list_handle ].links %}<!--孫リストここから-->
                                                 <li>
                                                   <a href="{{ sublink.url }}">{{ sublink.title }}</a>
 
