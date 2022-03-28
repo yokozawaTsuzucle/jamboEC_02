@@ -1,210 +1,143 @@
-function getVariantFromOptions() {
-  let variantArr = []
-  $(".product-category select").map(function(i, el) {
-    variant = {value: $(el).val(), index: $(el).data('index')};
-    variantArr.push(variant)
-  });
-  return variantArr;
+
+	$('.slider-wrap').slick({
+		fade:true,//切り替えをフェードで行う。初期値はfalse。
+		autoplay: true,//自動的に動き出すか。初期値はfalse。
+		autoplaySpeed: 6000,//次のスライドに切り替わる待ち時間
+		speed:1500,//スライドの動きのスピード。初期値は300。
+		infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+		slidesToShow: 1,//スライドを画面に3枚見せる
+		slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
+		arrows: true,//左右の矢印あり
+		prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+		nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+		dots: true,//下部ドットナビゲーションの表示
+        pauseOnFocus: false,//フォーカスで一時停止を無効
+        pauseOnHover: false,//マウスホバーで一時停止を無効
+        pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
+});
+
+//スマホ用：スライダーをタッチしても止めずにスライドをさせたい場合
+$('.slider').on('touchmove', function(event, slick, currentSlide, nextSlide){
+    $('.slider').slick('slickPlay');
+});
+
+
+
+
+//任意のタブにURLからリンクするための設定
+function GethashID (hashIDName){
+	if(hashIDName){
+		//タブ設定
+		$('.tab li').find('a').each(function() { //タブ内のaタグ全てを取得
+			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
+			if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
+				var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
+				$('.tab li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
+				$(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
+				//表示させるエリア設定
+				$(".special__contents").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
+				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
+			}
+		});
+	}
 }
 
-function updateHistoryState(variant) {
-  if (!history.replaceState || !variant) {
-    return;
-  }
+//タブをクリックしたら
+$('.tab a').on('click', function() {
+	var idName = $(this).attr('href'); //タブ内のリンク名を取得	
+	GethashID (idName);//設定したタブの読み込みと
+	return false;//aタグを無効にする
+});
 
-  var newurl =
-    window.location.protocol +
-    '//' +
-    window.location.host +
-    window.location.pathname +
-    '?variant=' +
-    variant.id;
+
+// 上記の動きをページが読み込まれたらすぐに動かす
+$(window).on('load', function () {
+    $('.tab li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
+    $('.special__contents:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
+	var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
+	GethashID (hashName);//設定したタブの読み込み
+});
+
+
+
+
+//上部画像の設定
+$('.gallery').slick({
+	infinite: true, //スライドをループさせるかどうか。初期値はtrue。
+	fade: true, //フェードの有効化
+	arrows: true,//左右の矢印あり
+	prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+	nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+});
+
+//選択画像の設定
+$('.choice-btn').slick({
+	infinite: true, //スライドをループさせるかどうか。初期値はtrue。
+	slidesToShow: 8, //表示させるスライドの数
+	focusOnSelect: true, //フォーカスの有効化
+	asNavFor: '.gallery', //連動させるスライドショーのクラス名
+});
   
-  window.history.replaceState({ path: newurl }, '', newurl);
+//下の選択画像をスライドさせずに連動して変更させる設定。
+$('.gallery').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+	var index = nextSlide; //次のスライド番号
+	//サムネイルのslick-currentを削除し次のスライド要素にslick-currentを追加
+	$(".choice-btn .slick-slide").removeClass("slick-current").eq(index).addClass("slick-current");
+});
+  
+
+
+function toggleNav() {
+  var body = document.body;
+  var hamburger = document.getElementById('js-hamburger');
+   var blackBg = document.getElementById('js-black-bg');
+
+  hamburger.addEventListener('click', function() {
+    body.classList.toggle('nav-open');
+  });
+  blackBg.addEventListener('click', function() {
+    body.classList.remove('nav-open');
+  });
+}
+toggleNav();
+
+
+
+//ドロップダウンの設定を関数でまとめる
+function mediaQueriesWin(){
+	var width = $(window).width();
+		$(".has-child>a").on('click', function() {//has-childクラスがついたaタグをクリックしたら
+			var parentElem =  $(this).parent();// aタグから見た親要素のliを取得し
+			$(parentElem).toggleClass('active');//矢印方向を変えるためのクラス名を付与して
+			$(parentElem).children('ul').stop().slideToggle(500);//liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
+			return false;//リンクの無効化
+		});
 }
 
-$('.product-category select').on('change', function() {
-  var selectedValues = getVariantFromOptions();
-  var variants = window.product.variants;
-  
-  // Search for product variants based on what was selected in the dropdowns
-  var found = _.find(variants, function(variant) {
-    return selectedValues.every(function(values) {
-      return _.isEqual(variant[values.index], values.value);
-    });
-  });
-  updateHistoryState(found)
-  $('#variant-id').val(found.id)
+// ページがリサイズされたら動かしたい場合の記述
+$(window).resize(function() {
+	mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
+});
+
+// ページが読み込まれたらすぐに動かしたい場合の記述
+$(window).on('load',function(){
+	mediaQueriesWin();/* ドロップダウンの関数を呼ぶ*/
 });
 
 
 
 
+//サイドバーカートページに動きを追加
+//$(".openbtn").click(function () {//ボタンがクリックされたら
+//	$(this).toggleClass('active');//ボタン自身に activeクラスを付与し
+//    $("#sidebar-cart").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+//    $("#js-black-bg").toggleClass('active');//ナビゲーションにactiveクラスを付与
+//    
+//});
+//
+//$('#js-black-bg').click(function() {
+//  $(this).removeClass('active');
+//  $("#sidebar-cart").removeClass('panelactive');
 
-
-
-
-
-
-$(function () {
-    $('.menu-trigger').on('click', function () {
-        $(this).toggleClass('active');
-        return false;
-    });
-    $('.menu-trigger').on('click', function () {
-        $('.menu').toggleClass('active');
-        return false;
-    });
-
-});
-
-$(function () {
-    $('.product_menu-trigger').on('click', function () {
-        $(this).toggleClass('active');
-        return false;
-    });
-    $('.product_menu-trigger').on('click', function () {
-        $('.product_menu').toggleClass('active');
-        return false;
-    });
-
-});
-
-
-//サイズの右から出てくるやつ
-$(function () {
-
-    $('.size_trigger').on('click', function () {
-        $('.size_menu').toggleClass('active');
-        return false;
-    });
-
-    $('.size_esc').on('click', function () {
-        $('.size_menu').toggleClass('active');
-        return false;
-    });
-    
-    $('.size_trigger').on('click', function () {
-        $('.size_menu_back').toggleClass('active');
-        return false;
-    });
-
-    $('.size_esc').on('click', function () {
-        $('.size_menu_back').toggleClass('active');
-        return false;
-    });
-    
-    $('.size_menu_back').on('click', function () {
-        $('.size_menu_back').toggleClass('active');
-        return false;
-    });
-    
-    $('.size_menu_back').on('click', function () {
-        $('.size_menu').toggleClass('active');
-        return false;
-    });
-
-});
-
-
-//アコーディオンのやつ
-$(function () {
-    $('.q1').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q1').toggleClass("open");
-    });
-    $('.q2').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q2').toggleClass("open");
-    });
-    $('.q3').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q3').toggleClass("open");
-    });
-    $('.q4').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q4').toggleClass("open");
-    });
-    $('.q5').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q5').toggleClass("open");
-    });
-    $('.q6').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q6').toggleClass("open");
-    });
-    $('.q7').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q7').toggleClass("open");
-    });
-    $('.q8').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q8').toggleClass("open");
-    });
-    $('.q9').click(function () {
-        $(this).next('.faq_a').slideToggle();
-        $(this).toggleClass("open");
-        $('.q9').toggleClass("open");
-    });
-});
-
-
-
-
-
-
-
-//カルーセルスライダー
-
-$(function () {
-    var slider = "#slider"; // スライダー
-    var thumbnailItem = "#thumbnail-list .thumbnail-item"; // サムネイル画像アイテム
-
-    // サムネイル画像アイテムに data-index でindex番号を付与
-    $(thumbnailItem).each(function () {
-        var index = $(thumbnailItem).index(this);
-        $(this).attr("data-index", index);
-    });
-
-    // スライダー初期化後、カレントのサムネイル画像にクラス「thumbnail-current」を付ける
-    // 「slickスライダー作成」の前にこの記述は書いてください。
-    $(slider).on('init', function (slick) {
-        var index = $(".slide-item.slick-slide.slick-current").attr("data-slick-index");
-        $(thumbnailItem + '[data-index="' + index + '"]').addClass("thumbnail-current");
-    });
-
-    //slickスライダー初期化  
-    $(slider).slick({
-        autoplay: false,
-        arrows: true,
-        fade: true,
-        infinite: false, //これはつけましょう。
-        prevArrow: '<img src="//cdn.shopify.com/s/files/1/0520/8250/7949/t/2/assets/arrow_p.png?v=10329649416798508202" alt="The Soap Store" class="slide-arrow prev-arrow sp" />',
-        nextArrow: '<img src="//cdn.shopify.com/s/files/1/0520/8250/7949/t/2/assets/arrow_n.png?v=13852325978264584707" alt="The Soap Store" class="slide-arrow next-arrow sp" />'
-
-    });
-    //サムネイル画像アイテムをクリックしたときにスライダー切り替え
-    $(thumbnailItem).on('click', function () {
-        var index = $(this).attr("data-index");
-        $(slider).slick("slickGoTo", index, false);
-    });
-
-    //サムネイル画像のカレントを切り替え
-    $(slider).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        $(thumbnailItem).each(function () {
-            $(this).removeClass("thumbnail-current");
-        });
-        $(thumbnailItem + '[data-index="' + nextSlide + '"]').addClass("thumbnail-current");
-    });
-});
-
-
+//})   ！！右側カートサイドバーを使うときの記載！！
 
