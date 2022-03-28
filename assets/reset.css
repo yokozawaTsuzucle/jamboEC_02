@@ -1092,19 +1092,22 @@ header {
 }
 
 .slider-item01 {
-  background-image: url(../img/IMG_0038a.jpg);
+  background-image: url("{{ 'IMG_0034a.jpg' | asset_img_url: '3000x'}}")
 }
 
 .slider-item02 {
-  background-image: url(../img/IMG_0034a.jpg);
+    background-image: url("{{ 'IMG_0034a.jpg' | asset_img_url: '3000x'}}")
+
 }
 
 .slider-item03 {
-  background-image: url(../img/IMG_0054.jpg);
+    background-image: url("{{ 'IMG_0034a.jpg' | asset_img_url: '3000x'}}")
+
 }
 
 .slider-item04 {
-  background-image: url(../img/IMG_0095a_edited.jpg);
+    background-image: url("{{ 'IMG_0034a.jpg' | asset_img_url: '3000x'}}")
+
 }
 
 /*矢印の設定*/
