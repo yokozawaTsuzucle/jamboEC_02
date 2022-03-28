@@ -11,6 +11,22 @@
         "settings": {
           "toppage_collection": "オンライン限定商品"
         }
+      },
+      "index_popular": {
+        "type": "index_popular",
+        "settings": {
+          "product": "お得セット01"
+        }
+      },
+      "index_limited": {
+        "type": "index_limited",
+        "settings": {
+        }
+      },
+      "index_special": {
+        "type": "index_special",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
