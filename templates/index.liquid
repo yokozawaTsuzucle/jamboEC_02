@@ -20,27 +20,9 @@
     </ul>
 
 </section>
-  <section class="2022_new_collection sec">
-    <h2>焼き肉ジャンボオンライン商品一覧</h2>
-    
 
-    <div class="collection-wrap flex">
-    {% for product in collection.products %}
-      <a href="{{ product.url }}" class="product_card">
-        <img src="{{image.src|product_img_url: 'master' }}" alt="">
-        <h3>{{ product.title }}</h3>
-        <p class="price">{{ product.price|money_without_currency }}</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-    {% endfor %}
 
-    </div>
-
-    
-
-    <a href="{{collection.url}}" class="Btn02 bgleft02"><span>VIEW ALL</span></a>
-
-  </section>
+  {% section 'collection-template' %}
 
   
 

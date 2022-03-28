@@ -1,126 +1,39 @@
-<div class="section_container">
-        <div class="product_inner">
-            <div class="section_title font01">NEW ITEM</div>
-            <div class=" product_menu_box font01">
-                
-                <a class="product_menu-trigger" href="#">
-                    category
-                    <span id="first"></span>
-                    <span id="second"></span>
-                </a>
-                <div class="product_menu">
-                    <div class="products_menu_contents font01">
-                        {% for link in linklists[section.settings.category].links %}
-                        <a href="{{link.url}}">{{link.title}}</a>
-                        {% endfor %}
-                        
-                        <!-- <a href="#">tops</a>
-                        <a href="#">bottom</a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="products">
-            {% paginate collection.products  by 6 %}
-                {% for product in products %}
+  <section class="2022_new_collection sec">
+    <h2>焼き肉ジャンボオンライン商品一覧</h2>
+    
 
-                <div class="product">
-                    <a href="{{product.url}}">
-                        <div class="product_img_box">
-                            {% for image in product.images limit:2%}
-                                <img class="product_img0{{forloop.index}}" src="{{ image.src | img_url: '1920x' }}">
-                            {% endfor %}
-                            
-                        </div>
-                        <div class="product_name font02 bold">{{product.title}}</div>
-                        <div class="product_price font02 bold">{{product.price | money}} +tax</div>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-
-           
-            <div class="page_nation">
-
-
-          
-        {%- if paginate.pages > 1 -%}
-        <!-- <nav class="nav_page" role="navigation"> -->
-            <ol class="pagination font02">
-                {%- if paginate.previous-%}
-                <li>
-                    <a class="trans" href="{{ paginate.previous.url }}">
-                        <i class="arrow_l fas fa-long-arrow-alt-left" style="color:black;"></i>
-                    </a>
-                </li>
-                {%- else -%}
-                <li class="disabled">
-                    <i class="arrow_l fas fa-long-arrow-alt-left a-trans" style="color:black;"></i>
-                </li>
-                {%- endif -%}
-                
-                
-                
-
-                {%- for part in paginate.parts -%}
-                    {%- if part.is_link -%}
-                       {%- if part.title == paginate.current_page -%}
-                            <li class="page_number font02">
-                                <a href="{{ part.url }}">{{part.title}}</a>
-                            </li>
-                        {%- endif -%}
-                    {%- else -%}
-                        {%- if part.title == paginate.current_page -%}
-                            <li class="page_number font02">
-                                <a href="{{ part.url }}">{{part.title}}</a>
-                            </li>
-                        {%- else -%}
-                            <li class="page_number font02">
-                                <a href="{{ part.url }}">{{part.title}}</a>
-                            </li>
-                        {%- endif -%}
-                        
-                    {%- endif -%}
-                    
-                    {%- if forloop.last == true -%}
-                       
-                       <li class="page_number font02"> / {{ forloop.index }}</li> 
-                    {% endif %}
-                {%- endfor -%}
-                
-                
-                
-
-                {%- if paginate.next -%}
-                <li>
-                    <a class="trans" href="{{ paginate.next.url }}">
-                        <i class="arrow_r fas fa-long-arrow-alt-right"></i>
-                    </a>
-                </li>
-                {%- else -%}
-                <li class="disabled">
-                    <i class="arrow_r fas fa-long-arrow-alt-right a-trans"></i>
-                </li>
-                {%- endif -%}
-            </ol>
-        <!-- </nav> -->
-        {%- endif -%}
-
-        {% endpaginate %}                  
+    <div class="collection-wrap flex">
+    {% assign collection = collections[section.settings.toppage_collection] %}
+    {% paginate collection.products by 4 %}
+    {% for product in collection.products %}
+      <a href="{{ product.url }}" class="product_card">
+        <img src="{{product.featured_image.src | img_url: '1920x'}}" alt="">
+        <h3>{{ product.title }}</h3>
+        <p class="price">{{ product.price|money_without_currency }}</p>
+        <p class="Btn bgleft"><span>詳細を見る</span></p>
+      </a>
+    {% endfor %}
+    {% endpaginate %}
 
     </div>
 
-</div>
+    
+
+    <a href="{{collection.url}}" class="Btn02 bgleft02"><span>VIEW ALL</span></a>
+
+  </section>
 
 
-{% schema %}
+  {% schema %}
   {
-    "name": "Collection Page",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "category",
-        "label": "Collection Dropdown"
-      }
-    ]
+      "name" :"TOPpage Collection",
+      "settings": [
+          {
+
+          "type": "collection",
+          "id": "toppage_collection",
+          "label": "Toppage_Collection"
+          }
+      ]
   }
-{% endschema %}
+  {% endschema %}
