@@ -18,7 +18,7 @@
                                   <li class="has-child">
                                     <a href="{{ childlink.url }}">{{ childlink.title }}</a>
                                               <ul>
-                                                {% for sublink in linklists[sub_list_handle].links %}<!--孫リストここから-->
+                                                {% for sublink in linklists[sub_list_handle ].main-menu.links %}<!--孫リストここから-->
                                                 <li>
                                                   <a href="{{ sublink.url }}">{{ sublink.title }}</a>
 
