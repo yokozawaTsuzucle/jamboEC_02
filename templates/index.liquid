@@ -22,7 +22,7 @@
 </section>
   <section class="2022_new_collection sec">
     <h2>焼き肉ジャンボオンライン商品一覧</h2>
-    {% paginate collection.products by 4 %}
+    
 
     <div class="collection-wrap flex">
     {% for product in collection.products %}
@@ -36,7 +36,7 @@
 
     </div>
 
-    {% endpaginate %}
+    
 
     <a href="{{collection.url}}" class="Btn02 bgleft02"><span>VIEW ALL</span></a>
 
