@@ -21,36 +21,24 @@
 
 </section>
   <section class="2022_new_collection sec">
-    <h2>2022 NEW COLLECTION "APPLAUSE"</h2>
+    <h2>焼き肉ジャンボオンライン商品一覧</h2>
+    {% paginate collection.products by 4 %}
+
     <div class="collection-wrap flex">
-      <a href="#" class="product_card">
-        <img src="img/IMG_0016a.jpg" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
+    {% for product in collection.products %}
+      <a href="{{ product.url }}" class="product_card">
+        <img src="{{image.src|product_img_url: 'master' }}" alt="">
+        <h3>{{ product.title }}</h3>
+        <p class="price">{{ product.price|money_without_currency }}</p>
         <p class="Btn bgleft"><span>詳細を見る</span></p>
       </a>
-      <a href="#" class="product_card">
-        <img src="img/IMG_0016a.jpg" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-      <a href="#" class="product_card">
-        <img src="img/IMG_0016a.jpg" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-      <a href="#" class="product_card">
-        <img src="img/IMG_0016a.jpg" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
+    {% endfor %}
 
     </div>
 
-    <a href="#" class="Btn02 bgleft02"><span>VIEW ALL</span></a>
+    {% endpaginate %}
+
+    <a href="{{collection.url}}" class="Btn02 bgleft02"><span>VIEW ALL</span></a>
 
   </section>
 
