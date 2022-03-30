@@ -1,9 +1,10 @@
   <section class="sec05 sec">
     <div class="bkimg__contents flex">
       <div class="bkimg__contents__txtBox">
+      {% assign burgCollection = collections | where: "title", "限定ハンバーグ" | first %}
         <p class="min">店舗、イベントでも食べられないハンバーグ</p>
         <h2>オンライン限定ハンバーグメニュー</h2>
-        <a href="{{ 'Burg' | url_for_type }}" class="Btn bgleft">
+        <a href="{{ burgCollection.url }}" class="Btn bgleft">
           <span>詳しくはこちら＞</span>
         </a>
         
