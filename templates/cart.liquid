@@ -1,46 +1,40 @@
-{% if cart.item_count > 0 %}
-  <h1>カート</h1>
-  <form action="/cart" method="post" novalidate>
-    <table>
-      <thead>
-        <th colspan="2">Prod</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th>total</th>
-      </thead>
-      <tbody>
-        {% for item in cart.items %}
-          <tr>
-            <td>
-              <a href="{{ item.url | within: collections.all }}">
-                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-              </a>
-            </td>
-            <td>
-              <a href="{{ item.url }}">{{ item.product.title }}</a>
-              {{ item.variant.title }}
-              <a href="/cart/change?line={{ forloop.index }}&quantity=0">remove</a>
-            </td>
-            <td>{{ item.price | money }}</td>
-            <td>
-              <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
-            </td>
-            <td>
-              {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
-              {{ item.line_price | money }}
-              {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <div>
-      <p>sub total : {{ cart.total_price | money }}</p>
-      <button type="submit" name="update">Update</button>
-      <button type="submit" name="checkout">Checkout</button>
+<div class="section_container">
+        <div class="section_inner">
+            <div class="section_title font01">SHOPPING CART</div>
+            <form method="post">
+            <div class="cart_items_box">
+
+
+              {% for line_item in cart.items %}
+                  <div class="line_item">
+                     <div class="line_item_inner">
+                         <img src="{{line_item.image | product_img_url: '1920x'}}" alt="">
+                         <div class="line_info_inner">
+                             <div class="line_item_name font02">{{line_item.title}}</div>
+                      <div class="line_item_count">
+                          <!-- <div class="minus_btn">-</div>1<div class="plus_btn">+</div> -->
+                          <input type="number" name="updates[]" class="btn btn-default" value={{line_item.quantity}} min="0" pattern="[0-9]*">
+                      </div>
+                      <div class="line_item_price font01 bold">{{line_item.line_price | money}} +tax</div>
+                      
+                     </div>
+                         </div>
+                      
+                     <a class="delete_btn" href="/cart/change?line={{forloop.index}}&quantity=0" rel={{line_item.id}}><span class="fas fa-trash-alt"></span>削除</a>  
+                  </div>
+              {% endfor %}  
+                
+                
+                <div class="cart_total_price bold font02">
+                    合計金額　{{cart.total_price | money}}
+                </div>
+
+                <div class="cart_btn_box">
+                    <input type="submit" name="update" class="cart_checkout_btn font02" value="カートの中身を更新する">
+                    <input type="submit" name="checkout" class="cart_checkout_btn font02"value="購入に進む">
+                </div>
+                
+              </form>  
+            </div>
+        </div>
     </div>
-  </form>
-{% else %}
-  <h2>cart</h2>
-  Cart is empty
-{% endif %}
