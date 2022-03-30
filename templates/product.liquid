@@ -15,7 +15,7 @@
           </ul>
           <ul class="choice-btn flex slideItemImage">
             {% for image in product.images %}
-            <li><img src="{{ image | image_url }}" alt=""></li>
+            <li><img src="{{ image.src | image_url: '1920x' }}" alt=""></li>
             {% endfor %}
           </ul>
         </div>
