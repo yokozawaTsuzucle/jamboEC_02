@@ -8,14 +8,14 @@
         <div class="ProductImage">
 
           <ul class="gallery">
-            <li><img src="img/shabazouSquare.jpg" alt=""></li>
-            <li><img src="img/shabazou__single.jpg" alt=""></li>
-            <li><img src="img/shabazou__three.jpg" alt=""></li>
+            {% for image in product.images %}
+            <li><img src="{{ image | image_url }}" alt=""></li>
+            {% endfor %}
           </ul>
           <ul class="choice-btn flex slideItemImage">
-            <li><img src="img/shabazouSquare.jpg" alt=""></li>
-            <li><img src="img/shabazou__single.jpg" alt=""></li>
-            <li><img src="img/shabazou__three.jpg" alt=""></li>
+            {% for image in product.images %}
+            <li><img src="{{ image | image_url }}" alt=""></li>
+            {% endfor %}
           </ul>
         </div>
         
