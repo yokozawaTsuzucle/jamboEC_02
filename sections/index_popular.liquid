@@ -7,8 +7,9 @@
 
 
     <div class="popular_product flex">
-    {% assign image = product.images %}
-      <img src="{{image.src | img_url: '800x800' }}" alt="" class="img">
+    {% assign media = product.media %}
+      <img src="{{media.src | img_url: '800x800' }}" alt="" class="img">
+       {{ media.preview_image | image_url: width: 110, height: 110, scale: 2 | image_tag: media.alt, 'product-single__thumbnail-image' }}
       <div class="product__detail">
         <div class="product__detail__main">
           <h2><span>{{product.title}}</span></h2>
