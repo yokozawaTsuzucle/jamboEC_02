@@ -8,15 +8,14 @@
         <div class="ProductImage">
 
           <ul class="gallery">
-          {% assign images = product.media | where: "media_type", "image" %}
-            {% for image in images %}
-            <li><img src="{{ image | image_url }}" alt=""></li>
-            {% endfor %}
+            <li><img src="img/shabazouSquare.jpg" alt=""></li>
+            <li><img src="img/shabazou__single.jpg" alt=""></li>
+            <li><img src="img/shabazou__three.jpg" alt=""></li>
           </ul>
           <ul class="choice-btn flex slideItemImage">
-            {% for image in product.images %}
-            <li><img src="{{ image.src | image_url: '1920x' }}" alt=""></li>
-            {% endfor %}
+            <li><img src="img/shabazouSquare.jpg" alt=""></li>
+            <li><img src="img/shabazou__single.jpg" alt=""></li>
+            <li><img src="img/shabazou__three.jpg" alt=""></li>
           </ul>
         </div>
         
