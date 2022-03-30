@@ -1,146 +1,100 @@
-<script type="text/javascript">
-  window.product = {{product | json}} || {};
-</script>
-{% assign description = product.description | split: "サイズ詳細" | first %}
-{% assign sizing = product.description | split: "サイズ詳細" | last %}
-{% assign relation_type = product.type %}
-{% assign relation_title = product.title %}
-{% assign collection = collections[section.settings.collection] %}
-<div class="single_product_container">
-    <div class="single_product_inner">
+  <main class="product">
+    
 
-        <div class="size_menu_back"></div>
+  <section class="sec sec03">
+    <div class="popular_product flex">
+      <div class="product__post">
 
-        <div class="size_menu font02">
-            <a class="size_esc" href="" src="">×</a>
-            <div class="size_detail">
-                <span class="bold">サイズ詳細</span>
-                {{sizing}}
-            </div>
+        <div class="ProductImage">
+
+          <ul class="gallery">
+            <li><img src="img/shabazouSquare.jpg" alt=""></li>
+            <li><img src="img/shabazou__single.jpg" alt=""></li>
+            <li><img src="img/shabazou__three.jpg" alt=""></li>
+          </ul>
+          <ul class="choice-btn flex slideItemImage">
+            <li><img src="img/shabazouSquare.jpg" alt=""></li>
+            <li><img src="img/shabazou__single.jpg" alt=""></li>
+            <li><img src="img/shabazou__three.jpg" alt=""></li>
+          </ul>
         </div>
+        
+        
+      </div>
 
-        <div class="product_top_container">
-            <div class="single_product_left">
-                <div class="single_product_main">
-                    <ul id="slider">
-                        {% for image in product.images %}
-                        <li class="slide-item"><img data-lazy="{{image.src | img_url: '1920x'}}" alt="画像"></li>
-                         {% endfor %}
-                    </ul>
+      <div class="product__detail">
+        <div class="product__detail__stickey">
 
-                </div>
-                <div class="single_product_imgs">
-                    <ul id="thumbnail-list">
-                        {% for image in product.images %}
-                        <li class="thumbnail-item"><img src="{{image.src | img_url: '1920x'}}"></li>
-                        {% endfor %}
-                    </ul>
-
-
-                </div>
-            </div>
-            <div class="single_product_right">
-                <div class="single_product_title font02 bold">{{product.title}}</div>
-                <div class="single_product_detail_box">
-                    <div class="single_product_price font01">{{product.price | money}} (+tax)</div>
-                    {% for color_option in product.options_by_name['色'].values %}
-                    <span class="color-circle" id="{{ color_option }}"></span>
-                    {% endfor %}
-                </div>
-
-
-                <div class="single_product_text font02">
-                    {{description}}
-                    
-                </div>
-
-
-                <a class="size_trigger font02" href="">→サイズ詳細を見る</a>
-
-                <form method="post" action="/cart/add">
-                    {% unless product.has_only_default_variant %}
-                    {% for product_option in product.options_with_values %}
-                    <div class="select_box product-category">
-                        <select required class="form-control single_product_size_select font02 bold" data-index="option{{forloop.index}}">
-                            {% for value in product_option.values %}
-
-                            {% if forloop.first == true %}
-                            <option value="" hidden {% if product_option.selected_value == value %} selected="selected" {% endif %}>{{value}}</option>
-
-                            {% else %}
-                            <option reqired value="{{value | escape}}" {% if product_option.selected_value == value %} selected="selected" {% endif %}>{{value}}</option>
-                            {% endif %}
-
-                            {% endfor %}
-                            <!-- <option value="" hidden>配色を選択してください</option>
-                                                <option value="color01">color01</option>
-                                                <option value="color01">color01</option>
-                                                <option value="color01">color01</option> -->
-
-                        </select>
-                    </div>
-                    {% endfor %}
-                    {% endunless %}
-
-
-                    <input type="hidden" id="variant-id" name="id" value={{product.variants.first.id}}>
-                    <input type="submit" value="カートに追加する" class="b_hover cart_btn font02">
-
-                    <a href="https://doublesiks.com/collections/{{product.type}}">
-                        <div class="a_under back_btn font02">← カテゴリに戻る</div>
-                    </a>
-
-                </form>
-            </div>
+          <div class="product__detail__main">
+            <p class="maison">焼肉ジャンボ</p>
+            <h2>ジャンボ特製シャバ臓焼</h2>
+            <p class="price">¥2,700</p>
+          </div>
+          <div class="product__detail__text">
+            <p>チョコレートをたっぷり使用し、小麦粉不使用でチョコレート・バター・卵のみでリッチに仕上げました。カカオニブとレアに焼き上げたガトーショコラの食感が絶妙。外はさっくり、中はとろりレアに。</p>
+            <p>
+              メゾンカカオのロングセラーの逸品。<br>
+              お手土産や贈り物にも喜ばれます。
+            </p>
+            <a href="#">美味しい秘密はこちらから！</a>
+            <p>
+              ※以下の期間熨斗の対応をお断りさせていただいております。何卒ご了承頂きますようお願い申し上げます。<br>中止期間：2022年1月10日〜3月14日ご注文分
+            </p>
+            <p>
+              ※ 住所不備、物流の状況、道路状況、天候、その他の事由によりご希望の到着日に沿いかねる場合がございます。余裕をもったご到着日のご指定をお勧めしております。
+            </p>
+          </div>
+          <div class="share flex">
+            <p class="mini">シェア</p>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+          </div>
+          <form action="#" class="product__wrap">
+          <label for="#">お渡し用袋</label>
+          <select name="" id="">
+            <option value="不要">不要</option>
+            <option value="要">要</option>
+          </select>
+        </form>
+        <div class="counter">
+          <span><i class="fas fa-minus"></i></span>
+          <span>1</span>
+          <span><i class="fas fa-plus"></i></span>
         </div>
-
-
-
-
-        <div class="product_bottom_container">
-            <div class="relation_items">
-                <div class="font01 bold coordinate_item_title">COORDINATE ITEM</div>
-
-                <div class="coordinate_items">
-                {% for tag in product.tags %}
-
-                    {% if {{tag}} contains 'type'%}
-                    {% assign type-tag = {{tag}} %}
-                        {% for collection in product.collections %}
-
-                            {% for product in collection.products%}
-                                    {% for tag in product.tags %}
-
-                                        {% if {{tag}} == type-tag %}
-                                            {% if product.title != relation_title%}
-
-
-                                                    <div class="c-item">
-                                                        <a href="{{product.url}}">
-                                                            <img class="c-img" src="{{ product.featured_image | img_url:'1920x'}}" alt="">
-                                                            <p class="font02 item_name">{{product.title}}</p>
-                                                            <p class="font01">{{product.price | money }} +tax</p>
-                                                        </a>
-
-                                                    </div>
-
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endfor%}        
-                            {% endfor%}
-                        {% endfor %}
-                    {% endif %}
-
-                {% endfor %}
-
-                    
-                </div>
-            </div>
-        </div>
-
-
+        <button href="#" class="Btn02 bgleft02">
+          <span>カートに追加する</span>
+        </button>
+        <p class="alert">あと<span>7時間0分</span>以内のご注文確定で3月02日（水）〜3月03日(木)の間に商品を受け取る</p>
+      </div>
+      </div>
     </div>
-</div>
+
+  </section>
+
+{% section 'index-collection' %}
+
+  
+  
 
 
 
+</main>
+
+
+
+<footer>
+  <div class="footer__inner">
+    <p class="copy">©️ 2022 Yakiniku-jambo Co., Ltd</p>
+  </div>
+</footer>
+
+
+  <script src="https://kit.fontawesome.com/14c63bdccc.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="js/script.js"></script>
+
+
+</body>
+</html>
