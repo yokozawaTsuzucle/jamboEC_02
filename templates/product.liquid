@@ -36,55 +36,29 @@
               {{ product.content }}
             </div>
   
-  <!--
-            <form action="#" class="product__wrap">
-              <label for="#">お渡し用袋</label>
-              <select name="" id="">
-                <option value="不要">不要</option>
-                <option value="要">要</option>
-              </select>
+  
+            <form method="post" action="/cart/add" enctype="multipart/form-data" id="AddToCartForm">
+              <!--<label for="#">お渡し用袋</label>
+                <select name="" id="">
+                  <option value="不要">不要</option>
+                  <option value="要">要</option>
+                </select> -->
+                <div class="counter">
+                  <label for="number">数量</label>
+                  <input type="number" id = "Quantity" name="quantity" class="form-control" value="1" min="1">
+                </div>
+              <button type="submit" value="カートに追加する" class="Btn02 bgleft02" name="add" id="AddToCart" ><span>カートに入れる</span></button>
             </form>
-          <div class="counter">
-            <span><i class="fas fa-minus"></i></span>
-            <span>1</span>
-            <span><i class="fas fa-plus"></i></span>
-          </div>
-          <button href="#" class="Btn02 bgleft02">
-            <span>カートに追加する</span>
-          </button>
 
-          -->
+          
 
 
-              <form method="post" action="/cart/add">
-                    {% unless product.has_only_default_variant %}
-                    {% for product_option in product.options_with_values %}
-                    <div class="select_box product-category">
-                        <select required class="form-control single_product_size_select font02 bold" data-index="option{{forloop.index}}">
-                            {% for value in product_option.values %}
-
-                            {% if forloop.first == true %}
-                            <option value="" hidden {% if product_option.selected_value == value %} selected="selected" {% endif %}>{{value}}</option>
-
-                            {% else %}
-                            <option reqired value="{{value | escape}}" {% if product_option.selected_value == value %} selected="selected" {% endif %}>{{value}}</option>
-                            {% endif %}
-
-                            {% endfor %}
-                            <!-- <option value="" hidden>配色を選択してください</option>
-                                                <option value="color01">color01</option>
-                                                <option value="color01">color01</option>
-                                                <option value="color01">color01</option> -->
-
-                        </select>
-                    </div>
-                    {% endfor %}
-                    {% endunless %}
-
-
-                    <input type="hidden" id="variant-id" name="id" value={{product.variants.first.id}}>
+               
                     
-                    <p class="Btn02 bgleft02"><input type="submit" value="カートに追加する"></p>
+                    
+
+
+                    
                     
 
 
