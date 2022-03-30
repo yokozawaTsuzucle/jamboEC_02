@@ -12,7 +12,7 @@
     {% assign collection = collections[section.settings.toppage_collection] %}
     {% endif %}
     
-    {% paginate collection.products by 6 %}
+    {% paginate collection.products by 8 %}
     {% for product in collection.products %}
       <a href="{{ product.url }}" class="product_card">
         <img src="{{product.featured_image.src | img_url: '1920x'}}" alt="">
