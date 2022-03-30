@@ -25,7 +25,7 @@
       "index-collection": {
         "type": "index-collection",
         "settings": {
-          "toppage_collection": "オンライン限定商品"
+          "toppage_collection": "all"
         }
       }
     },
