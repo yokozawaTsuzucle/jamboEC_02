@@ -6,12 +6,6 @@
         "settings": {
         }
       },
-      "collection-template": {
-        "type": "collection-template",
-        "settings": {
-          "toppage_collection": "オンライン限定商品"
-        }
-      },
       "index_popular": {
         "type": "index_popular",
         "settings": {
@@ -26,6 +20,12 @@
       "index_special": {
         "type": "index_special",
         "settings": {
+        }
+      },
+      "index-collection": {
+        "type": "index-collection",
+        "settings": {
+          "toppage_collection": "オンライン限定商品"
         }
       }
     },
