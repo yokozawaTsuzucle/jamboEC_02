@@ -1,9 +1,17 @@
   <section class="2022_new_collection sec">
+      {% assign collection = collections[section.settings.toppage_collection] %}
+
     <h2>焼き肉ジャンボオンライン商品一覧</h2>
     
 
     <div class="collection-wrap flex">
+    <!-- collectionの分岐を追加 -->
+    {% if collection.handle == 'burg' %}
+    {% assign collection = collections | where: "title", "限定ハンバーグ" | first %}
+    {% else %}
     {% assign collection = collections[section.settings.toppage_collection] %}
+    {% endif %}
+    
     {% paginate collection.products by 4 %}
     {% for product in collection.products %}
       <a href="{{ product.url }}" class="product_card">
@@ -34,6 +42,8 @@
           "id": "toppage_collection",
           "label": "Toppage_Collection"
           }
+
+          
       ]
   }
   {% endschema %}
