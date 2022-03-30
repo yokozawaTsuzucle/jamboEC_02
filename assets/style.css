@@ -669,21 +669,6 @@ header {
   margin-top: 15px;
 }
 
-.slider-item01 {
-  background-image: url(../img/IMG_0038a.jpg);
-}
-
-.slider-item02 {
-  background-image: url(../img/IMG_0034a.jpg);
-}
-
-.slider-item03 {
-  background-image: url(../img/IMG_0054.jpg);
-}
-
-.slider-item04 {
-  background-image: url(../img/IMG_0095a_edited.jpg);
-}
 
 /*矢印の設定*/
 .slick-prev,
