@@ -202,8 +202,29 @@ header {
   top: 50%;
 }
 
+
+
+
 .header .icon-wrap li {
   margin: 5px;
+  position: relative;
+}
+
+.header .icon-wrap li::after{
+  width: 15px;
+  height: 15px;
+  background: #ff4500;
+  border-radius: 50%;
+  content: "1";
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  line-height: 15px;
+  top: -10%;
+  left: -50%;
 }
 
 @media (min-width: 1330px) {
