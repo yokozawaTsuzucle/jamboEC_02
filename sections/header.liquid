@@ -12,7 +12,13 @@
       <img src="img/logo.jpeg" alt="">
     </a>
     <ul class="icon-wrap">
-      <li><a href="/cart" id="openbtn" class="openbtn"><i class="fas fa-shopping-cart"></i></a><span class="cartNumber">1</span></li>
+      <li>
+        <a href="/cart" id="openbtn" class="openbtn"><i class="fas fa-shopping-cart"></i></a>
+        {% assign Count = cart.item_count %}
+        {% if Count != 0 %}
+        <span class="cartNumber">{{ cart.item_count }}</span>
+        {% endif %}
+      </li>
       
     </ul>
     <div class="black_bg" id="js-black-bg"></div>
