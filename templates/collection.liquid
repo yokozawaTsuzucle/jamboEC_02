@@ -13,9 +13,9 @@
     {% paginate collection.products by 8 %}
 
     {% if collection.handle == 'burg' %}
-    {% assign collection = collection.burg %}
+    {% assign collection = collections.burg %}
     {% else %}
-    {% assign collection = collection.all %}
+    {% assign collection = collections.all %}
     {%endif%}
 
      
