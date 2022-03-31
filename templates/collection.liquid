@@ -12,6 +12,12 @@
     
     {% paginate collection.products by 8 %}
 
+    {% if collection.handle == 'burg' %}
+    {% assign collection = collection.handle['burg'] %}
+    {% else %}
+    {% assign collection = collection.handle['all'] %}
+    {%endif%}
+
      
     {% for product in collection.products %}
       <a href="{{ product.url }}" class="product_card">
@@ -21,6 +27,8 @@
         <p class="Btn bgleft"><span>詳細を見る</span></p>
       </a>
     {% endfor %}
+
+    
     {% endpaginate %}
 
     </div>
