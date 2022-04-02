@@ -15,7 +15,7 @@
                           <!-- <div class="minus_btn">-</div>1<div class="plus_btn">+</div> -->
                           <input type="number" name="updates[]" class="btn btn-default" value={{line_item.quantity}} min="0" pattern="[0-9]*">
                       </div>
-                      <div class="line_item_price font01 bold">{{line_item.line_price | money}} +tax</div>
+                      <div class="line_item_price font01 bold">{{line_item.line_price | money}} (税込)</div>
                       
                      </div>
                          </div>
@@ -26,7 +26,7 @@
                 
                 
                 <div class="cart_total_price bold font02">
-                    合計金額　{{cart.total_price | money}}
+                    合計金額　{{cart.total_price | money}}(税込)
                 </div>
 
 <!--
