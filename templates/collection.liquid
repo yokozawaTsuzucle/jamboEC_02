@@ -23,7 +23,7 @@
       <a href="{{ product.url }}" class="product_card box fadeUpTrigger">
         <img src="{{product.featured_image.src | img_url: '1920x'}}" alt="">
         <h3>{{ product.title }}</h3>
-        <p class="price">{{ product.price | money }}+(税込)</p>
+        <p class="price">{{ product.price | money }}(税込)</p>
         <p class="Btn bgleft"><span>詳細を見る</span></p>
       </a>
     {% endfor %}
