@@ -13,7 +13,7 @@
 
      
     {% for product in collection.products %}
-      <a href="{{ product.url }}" class="product_card">
+      <a href="{{ product.url }}" class="product_card fadeUp">
         <img src="{{product.featured_image.src | img_url: '1920x'}}" alt="">
         <h3>{{ product.title }}</h3>
         <p class="price">{{ product.price | money }}</p>
