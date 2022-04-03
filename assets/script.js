@@ -2,7 +2,7 @@
 
 	$('.slider-wrap').slick({
 
-		
+		autoplay: true, // 自動再生を設定
     autoplaySpeed: 1500, // 自動再生のスピード（ミリ秒単位）
     dots: true, // ドットインジケーターの表示
     vertical: true, // 垂直スライドモード
