@@ -855,6 +855,23 @@ header {
 /* スマホslick */
 
 @media(max-width: 768px){
+  .slider-wrap{
+    height: 50vh;
+  }
+
+ 
+   .slick-slide {
+     transition: all ease-in-out .3s;
+     opacity: .2;
+     height: 36vh !important;
+     top: .65%;
+   }
+
+
+   .slick-list{
+    height: 50vh !important;
+  }
+
   .slick-dots{
     margin-top: 10px;
   }
@@ -869,18 +886,6 @@ header {
   .slick-next, .slick-prev{
     display: none !important;
   }
-
-
-  .slick-vertical .slick-slide{
-   height: 27vh; 
-  }
-
-  .slick-slide {
-    transition: all ease-in-out .3s;
-    opacity: .2;
-    height: 27vh !important;
-    top: 2.2%;
-  }
   .slick-active {
     opacity: 1;
   }
@@ -888,35 +893,27 @@ header {
     opacity: 1;
   }
 
+ 
+
+}
+
+
+@media(max-width: 500px){
+
+
+
+  .slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: .2;
+    height: 27vh !important;
+    top: 2.2%;
+  }
+
   .slick-list{
     height: 50vh !important;
   }
 }
 
-@media(max-width: 500px){
-  .slider-wrap{
-    height: 50vh;
-  }
-
-  .slick-vertical .slick-slide{
-    height: 27vh; 
-   }
- 
-   .slick-slide {
-     transition: all ease-in-out .3s;
-     opacity: .2;
-     height: 27vh !important;
-     top: 2.2%;
-   }
-
-
-   .slick-list{
-    height: 50vh !important;
-  }
-
- 
-
-}
 
 
 
