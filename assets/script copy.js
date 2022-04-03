@@ -15,9 +15,6 @@
         pauseOnFocus: false,//フォーカスで一時停止を無効
         pauseOnHover: false,//マウスホバーで一時停止を無効
         pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
-
-				vertical: true, // 垂直スライドモード
-				verticalSwiping: true, // 垂直のスワイプを有効
 });
 
 //スマホ用：スライダーをタッチしても止めずにスライドをさせたい場合
