@@ -1,19 +1,4 @@
 
-		$(document).on('ready', function() {
-			$('.vertical-center').slick({
-				autoplay: true,
-				autoplaySpeed: 1500,
-				dots: true,
-				vertical: true,
-				verticalSwiping: true,
-				centerMode: true,
-			});
-		});
-
-
-
-
-
 
 	$('.slider-wrap').slick({
 		fade:true,//切り替えをフェードで行う。初期値はfalse。
