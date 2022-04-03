@@ -3,6 +3,7 @@
         <div class="detail_inner">
             <div class="detail_title font02">{{ article.title }}</div>
             <div class="detail_date font01">{{ article.published_at | date: "%Y.%m.%d " }}</div>
+         
             <div class="detail_image">
                 <img src="{{ article.image.src | img_url: '500x' }}" alt="">
             </div>
