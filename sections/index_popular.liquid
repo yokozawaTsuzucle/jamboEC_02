@@ -29,14 +29,14 @@
                 <div class="counter">
                   <label for="number">数量</label>
                   <div class="counter__submit">
-                  <input type="number" id = "Quantity" name="quantity" class="form-control" value="1" min="1">
-                  </div>
-                </div>
-
                       <div class="line_item_count">
                           <!-- <div class="minus_btn">-</div>1<div class="plus_btn">+</div> -->
                           <input type="number" name="updates[]" class="btn btn-default" value={{line_item.quantity}} min="0" pattern="[0-9]*">
                       </div>
+
+                  </div>
+                </div>
+
 
 
               <input type="hidden" id="variant-id" name="id" value={{product.variants.first.id}}>
