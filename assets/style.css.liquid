@@ -559,7 +559,7 @@ header {
   display: none;
   /*JSのslidetoggleで表示させるため非表示に*/
   -webkit-transition: none;
-  transition: none;
+  transition: nosec
   /*JSで制御するためCSSのアニメーションを切る*/
   /*矢印の向き*/
 }
@@ -1168,6 +1168,15 @@ header {
 
 
 }
+
+
+@media(max-width: 400px) {
+  .sec {
+    margin-top: 15vw;
+    margin-bottom: 10vw;
+  }
+}
+
 
 @media (min-width: 1920px) {
   .sec {
