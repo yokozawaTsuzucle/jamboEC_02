@@ -63,7 +63,18 @@
 
               <input type="hidden" id="variant-id" name="id" value={{product.variants.first.id}}>
 
-              <button type="submit" class="Btn02 bgleft02" name="add" id="AddToCart" ><span>カートに入れる</span></button>
+              
+              {%- if variant.inventory_quantity  > 0 -%}
+              	<button type="submit" class="Btn02 bgleft02" name="add" id="AddToCart" ><span>カートに入れる</span></button>
+              	{%- if variant.inventory_quantity  < 10 -%}
+              		<span style="color:red;">残り在庫 {{ variant.inventory_quantity }} 個です</span>
+              	{%- endif -%}
+              {%- else -%}
+
+              	<button type="submit" class="Btn02 not_bgleft02" name="add" id="" ><span>在庫なし</span></button>
+              
+              {%- endif -%}
+              
             </form>
 
           
